@@ -1,0 +1,14 @@
+version: "3.4"
+networks:
+  api_server_default:
+    external: true
+services:
+  edgescreen_backend:
+    container_name: edgescreen_backend
+    env_file: /opt/edgescreen-api/edgescreen-server/.env
+    restart: unless-stopped
+    ports:
+      - 5555:5555
+    build:
+      context: .
+    network_mode: host
